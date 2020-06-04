@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-  getStuff() {
-  }
+  getStuff = () => "Wild function'ed text";
 
   getMorningGreeting() {
   }
@@ -12,10 +11,11 @@ class App extends Component {
   }
 
   showCompany(name, revenue) {
+    return (<div id={name}>{name} makes {revenue} every year</div>)
   }
 
   getClassName(temperature) {
-
+    return (<div id="weatherBox" class={temperature<15 ? "freezing" : temperature>30 ? "hell-scape": "fair" }></div>)
   }
 
   render() {
@@ -31,7 +31,7 @@ class App extends Component {
         <div className="ex-space">
           <h4 className='ex-title'>Spot-check 1</h4 >
           <div className="exercise" id="spotcheck-1">
-            {/* your code here */}
+            <h1>Stuff: {this.getStuff()}</h1>
           </div>
         </div>
 
@@ -52,14 +52,16 @@ class App extends Component {
         <div className="ex-space">
           <h4 className='ex-title'>Exercise 1</h4>
           <div className="exercise" id="ex-1">
-            {/* your code here */}
+            {
+              companies.map(c => this.showCompany(c.name, c.revenue))
+            }
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className='ex-title'>Exercise 2</h4>
           <div className="exercise" id="ex-2">
-            {/* your code here */}
+            {this.getClassName(12)}
           </div>
         </div>
       </div>
